@@ -1,18 +1,41 @@
-require 'net/ftp'
 class FtpLoad
+  require 'net/ftp'
+  require 'zip'
+  require 'tmpdir'
+  require 'tempfile'
   include Interactor
-  CONTENT_SERVER_DOMAIN_NAME = 'ftp.zakupki.gov.ru'
-  CONTENT_SERVER_FTP_LOGIN = 'free'
-  CONTENT_SERVER_FTP_PASSWORD = 'free'
-
   def call
-      puts 'тест'
-    # Net::FTP.open(CONTENT_SERVER_DOMAIN_NAME, CONTENT_SERVER_FTP_LOGIN, CONTENT_SERVER_FTP_PASSWORD) { |ftp|
-    #   files = ftp.list("/fcs_fas/unfairSupplier/")
-    #   ftp.getbinaryfile('unfairSupplier_2018062900_2018063000_001.xml.zip')
-    #   puts files
-    #
-    # }
+    # выполняю соединение с FTP
+    ftp = Net::FTP.open('ftp.zakupki.gov.ru', 'free', 'free')
+    # в files записываю массив имён файлов и вывожу пока список файлов для поверки
+    files = ftp.nlst("/fcs_fas/unfairSupplier")
+    puts files
+    # создаю временный файл
+    local_tmp_file = Tempfile.new(File.basename(files[2]))
 
+    #во временный файл сохраняю удалённый
+    ftp.getbinaryfile(files[2],local_tmp_file)
+
+    ftp.close
+    @temp_dir = Dir.mktmpdir(File.basename(files[2]))
+
+    Zip::File.open(local_tmp_file) do |zip_file|
+
+      # Handle entries one by one
+      zip_file.each do |entry|
+        # Extract to file/directory/symlink
+        puts "Extracting #{entry.name}"
+        puts @temp_dir
+        dest_file = File.join(@temp_dir, entry.name)
+        entry.extract(dest_file)
+
+        # Read into memory
+        content = entry.get_input_stream.read
+        content=Hash.from_xml(content)
+        puts content
+      end
+
+    end
   end
+
 end

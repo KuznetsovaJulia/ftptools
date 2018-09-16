@@ -1,0 +1,2 @@
+class UnfairSupplier < ApplicationRecord
+end
