@@ -24,18 +24,23 @@ class FtpLoad
       # Handle entries one by one
       zip_file.each do |entry|
         # Extract to file/directory/symlink
+
         puts "Extracting #{entry.name}"
         puts @temp_dir
         dest_file = File.join(@temp_dir, entry.name)
         entry.extract(dest_file)
+        puts "КОНЕЕЕЕЕЕЕЦ"
 
         # Read into memory
         content = entry.get_input_stream.read
         content=Hash.from_xml(content)
         puts content
+        puts "Extracting #{entry.name}"
+
       end
 
     end
   end
+
 
 end

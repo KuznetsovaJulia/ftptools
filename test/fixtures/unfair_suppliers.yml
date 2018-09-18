@@ -1,13 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  inn: MyString
-  kpp: MyString
+  registry_num: MyString
+  publish_date: 2018-09-17
+  approve_date: 2018-09-17
+  state: MyString
   full_name: MyString
+  type: 
+  firm_name: MyString
+  inn: MyString
   data: 
 
 two:
-  inn: MyString
-  kpp: MyString
+  registry_num: MyString
+  publish_date: 2018-09-17
+  approve_date: 2018-09-17
+  state: MyString
   full_name: MyString
+  type: 
+  firm_name: MyString
+  inn: MyString
   data: 
