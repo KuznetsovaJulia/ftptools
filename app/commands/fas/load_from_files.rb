@@ -9,16 +9,8 @@ require 'zip'
 
 class Fas::LoadFromFiles
   include Interactor
-
-  expects do
-    required(:files).filled
-    required(:to_value).filled
-    required(:model).filled
-  end
-
   def call
     total = 0
-
     context.files.each do |zip_abspath|
       unzip_file(zip_abspath, /^*.xml/) do |filename, content|
         print("\t#{filename}\n")
@@ -29,12 +21,12 @@ class Fas::LoadFromFiles
         nodes = context.nodes_from.call(xml)
         # --- перебираем все XML узлы
         # по атрибутам по которым ведется upsert должен быть построен уникальный ключ
-        values = nodes.map { |node| context.to_value.call(node) }
+        values =context.to_value.call(nodes)
         context.model.upsert(values)
         total += nodes.size
       end
     end
-    print("Всего загружено записей: #{total}\n")
+      print("Всего загружено записей: #{total}\n")
   end
 
   private

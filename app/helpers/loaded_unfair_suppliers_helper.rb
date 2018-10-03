@@ -1,0 +1,2 @@
+module LoadedUnfairSuppliersHelper
+end

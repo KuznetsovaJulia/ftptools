@@ -17,8 +17,7 @@ class FtpLoad
     ftp.getbinaryfile(files[2],local_tmp_file)
 
     ftp.close
-    @temp_dir = Dir.mktmpdir(File.basename(files[2]))
-
+z
     Zip::File.open(local_tmp_file) do |zip_file|
 
       # Handle entries one by one

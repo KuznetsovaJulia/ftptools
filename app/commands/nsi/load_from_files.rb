@@ -33,6 +33,7 @@ class Nsi::LoadFromFiles
         values = nodes.map { |node| context.to_value.call(node) }
         context.model.upsert(values)
         total += nodes.size
+        puts xml
       end
     end
     print("Всего загружено записей: #{total}\n")
