@@ -3,7 +3,6 @@
 
 class Nsi::DownloadFromFtp
   include Interactor
-  include Interactor::Contracts
   require 'net/ftp'
   require 'fileutils'
   # @return [Array] Массив строк - абсолютных путей к загруженным файлам

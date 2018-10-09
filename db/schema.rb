@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_24_120001) do
+ActiveRecord::Schema.define(version: 2018_10_09_100444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,9 +18,26 @@ ActiveRecord::Schema.define(version: 2018_09_24_120001) do
   create_table "loaded_unfair_suppliers", force: :cascade do |t|
     t.string "name"
     t.string "number"
+    t.text "files_array", array: true
     t.boolean "downloaded"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_loaded_unfair_suppliers_on_name", unique: true
+  end
+
+  create_table "nsi_placing_ways", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.boolean "actual"
+    t.string "placing_way_type"
+    t.boolean "is_procedure"
+    t.jsonb "data"
+    t.boolean "used_in_rpg", default: false
+    t.boolean "rpg_joint", default: false
+    t.bigint "placing_way_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["placing_way_id"], name: "index_nsi_placing_ways_on_placing_way_id", unique: true
   end
 
   create_table "unfair_suppliers", force: :cascade do |t|
@@ -36,7 +53,9 @@ ActiveRecord::Schema.define(version: 2018_09_24_120001) do
     t.bigint "loaded_unfair_supplier_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["inn"], name: "index_unfair_suppliers_on_inn", unique: true
     t.index ["loaded_unfair_supplier_id"], name: "index_unfair_suppliers_on_loaded_unfair_supplier_id"
+    t.index ["registry_num"], name: "index_unfair_suppliers_on_registry_num", unique: true
   end
 
   add_foreign_key "unfair_suppliers", "loaded_unfair_suppliers"

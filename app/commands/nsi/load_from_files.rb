@@ -9,17 +9,10 @@ require 'zip'
 
 class Nsi::LoadFromFiles
   include Interactor
-  include Interactor::Contracts
-
-  expects do
-    required(:files).filled
-    required(:to_value).filled
-    required(:model).filled
-  end
 
   def call
     total = 0
-
+puts context.files
     context.files.each do |zip_abspath|
       unzip_file(zip_abspath, /^*.xml/) do |filename, content|
         print("\t#{filename}\n")
@@ -30,9 +23,9 @@ class Nsi::LoadFromFiles
         nodes = context.nodes_from.call(xml)
         # --- перебираем все XML узлы
         # по атрибутам по которым ведется upsert должен быть построен уникальный ключ
-        values = nodes.map { |node| context.to_value.call(node) }
+        values = nodes.map { |node| context.to_value.call(node) }.compact
         context.model.upsert(values)
-        total += nodes.size
+        total += values.size
         puts xml
       end
     end
