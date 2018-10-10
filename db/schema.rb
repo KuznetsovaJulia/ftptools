@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_09_100444) do
+ActiveRecord::Schema.define(version: 2018_10_10_060615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,20 @@ ActiveRecord::Schema.define(version: 2018_10_09_100444) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["placing_way_id"], name: "index_nsi_placing_ways_on_placing_way_id", unique: true
+  end
+
+  create_table "nsi_special_purchases", force: :cascade do |t|
+    t.bigint "special_purchase_id"
+    t.string "code"
+    t.text "short_name"
+    t.text "full_name"
+    t.boolean "actual", default: false
+    t.text "tender_plan2017_short"
+    t.text "tender_plan_2017_full"
+    t.jsonb "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["special_purchase_id"], name: "index_nsi_special_purchases_on_special_purchase_id", unique: true
   end
 
   create_table "unfair_suppliers", force: :cascade do |t|
