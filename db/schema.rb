@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_10_060615) do
+ActiveRecord::Schema.define(version: 2018_10_10_065728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(version: 2018_10_10_060615) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["placing_way_id"], name: "index_nsi_placing_ways_on_placing_way_id", unique: true
+  end
+
+  create_table "nsi_single_customer_reasons", force: :cascade do |t|
+    t.jsonb "data"
+    t.string "name"
+    t.boolean "actual", default: false
+    t.bigint "single_customer_reason_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["single_customer_reason_id"], name: "index_nsi_single_customer_reasons_on_single_customer_reason_id", unique: true
   end
 
   create_table "nsi_special_purchases", force: :cascade do |t|
