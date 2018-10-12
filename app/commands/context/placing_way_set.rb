@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
-class Nsi::PlacingWay::Synchronize::SetContext
-  include Interactor
+
+
+
+class Context::PlacingWaySet
+include Interactor
 
   def call
     context.dir = 'nsiPlacingWay'
@@ -21,6 +24,7 @@ class Nsi::PlacingWay::Synchronize::SetContext
         placing_way_id: node['placingWayId'].to_i
       }
     end
+
     context.nodes_from = ->(xml) { xml['export']['nsiPlacingWayList']['nsiPlacingWay'] }
   end
 end

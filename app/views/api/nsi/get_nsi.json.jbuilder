@@ -1,0 +1,1 @@
+json.array! @nsi, :placing_way_id,:name,:code,:data

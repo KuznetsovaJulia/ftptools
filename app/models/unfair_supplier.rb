@@ -1,3 +1,3 @@
 class UnfairSupplier < ApplicationRecord
-    belongs_to :loaded_unfair_supplier
+    upsert_keys [:inn,:registry_num]
 end

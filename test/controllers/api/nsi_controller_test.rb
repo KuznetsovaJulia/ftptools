@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UnfairSuppliersControllerTest < ActionDispatch::IntegrationTest
+class Api::NsiControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

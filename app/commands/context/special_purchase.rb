@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Nsi::SpecialPurchase::Synchronize::SetContext
+class Context::SpecialPurchase
   include Interactor
 
   def call
