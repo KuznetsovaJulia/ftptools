@@ -22,6 +22,7 @@ include Interactor
     end
 
 
+
     context.nodes_from = ->(xml) { xml['export']['nsiOKTMOList']['nsiOKTMO'] }
   end
 end

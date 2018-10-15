@@ -10,6 +10,7 @@ class CreateNsiOktmos < ActiveRecord::Migration[5.2]
       t.date :last_update_date
       t.index :code, unique: true
 
+
       t.timestamps
     end
   end
