@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_10_065728) do
+ActiveRecord::Schema.define(version: 2018_10_15_112500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,61 @@ ActiveRecord::Schema.define(version: 2018_10_10_065728) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_loaded_unfair_suppliers_on_name", unique: true
+  end
+
+  create_table "nsi_contract_single_customer_reasons", id: :bigint, default: nil, force: :cascade do |t|
+    t.jsonb "data"
+    t.string "name"
+    t.boolean "actual", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["id"], name: "index_nsi_contract_single_customer_reasons_on_id", unique: true
+  end
+
+  create_table "nsi_okeis", force: :cascade do |t|
+    t.string "code"
+    t.string "fullname"
+    t.string "section_code"
+    t.string "section_name"
+    t.bigint "group_id"
+    t.string "group_name"
+    t.string "local_name"
+    t.string "international_name"
+    t.string "local_symbol"
+    t.string "international_symbol"
+    t.boolean "actual"
+    t.boolean "is_temporaryfor_ktru"
+    t.jsonb "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_nsi_okeis_on_code", unique: true
+  end
+
+  create_table "nsi_okpd2s", id: :bigint, default: nil, force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.string "comment"
+    t.bigint "parent_id"
+    t.string "parent_code"
+    t.jsonb "data"
+    t.boolean "actual"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_nsi_okpd2s_on_code", unique: true
+    t.index ["id"], name: "index_nsi_okpd2s_on_id", unique: true
+  end
+
+  create_table "nsi_oktmos", force: :cascade do |t|
+    t.string "code"
+    t.string "parent_code"
+    t.string "fullname"
+    t.boolean "actual"
+    t.jsonb "data"
+    t.string "section"
+    t.date "last_update_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_nsi_oktmos_on_code", unique: true
   end
 
   create_table "nsi_placing_ways", force: :cascade do |t|
@@ -40,18 +95,7 @@ ActiveRecord::Schema.define(version: 2018_10_10_065728) do
     t.index ["placing_way_id"], name: "index_nsi_placing_ways_on_placing_way_id", unique: true
   end
 
-  create_table "nsi_single_customer_reasons", force: :cascade do |t|
-    t.jsonb "data"
-    t.string "name"
-    t.boolean "actual", default: false
-    t.bigint "single_customer_reason_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["single_customer_reason_id"], name: "index_nsi_single_customer_reasons_on_single_customer_reason_id", unique: true
-  end
-
-  create_table "nsi_special_purchases", force: :cascade do |t|
-    t.bigint "special_purchase_id"
+  create_table "nsi_special_purchases", id: :bigint, default: nil, force: :cascade do |t|
     t.string "code"
     t.text "short_name"
     t.text "full_name"
@@ -61,7 +105,7 @@ ActiveRecord::Schema.define(version: 2018_10_10_065728) do
     t.jsonb "data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["special_purchase_id"], name: "index_nsi_special_purchases_on_special_purchase_id", unique: true
+    t.index ["id"], name: "index_nsi_special_purchases_on_id", unique: true
   end
 
   create_table "unfair_suppliers", force: :cascade do |t|
