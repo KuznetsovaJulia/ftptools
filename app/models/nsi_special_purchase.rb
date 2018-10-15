@@ -1,4 +1,4 @@
 class NsiSpecialPurchase < ApplicationRecord
-  upsert_keys [:special_purchase_id]
+  upsert_keys [:id]
 
 end

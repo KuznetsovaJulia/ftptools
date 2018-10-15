@@ -15,7 +15,7 @@ class Context::SpecialPurchase
         data: node,
         tender_plan2017_short: node['tenderPlan2017ShortName'],
         tender_plan_2017_full: node['tenderPlan2017FullName'],
-        special_purchase_id: node['id'].to_i
+        id: node['id'].to_i
       }
     end
     context.nodes_from = ->(xml) { xml['export']['nsiSpecialPurchases']['nsiSpecialPurchase'] }
