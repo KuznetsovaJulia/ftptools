@@ -5,7 +5,6 @@ class Context::Ktru
     context.dir = 'nsiKTRU'
     context.model = NsiKtru
     context.to_value = lambda do |node|
-      node = node['data']
       {
           code: node['code'],
           version: node['version'].to_i,

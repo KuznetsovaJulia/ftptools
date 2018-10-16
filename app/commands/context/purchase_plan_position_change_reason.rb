@@ -10,7 +10,7 @@ class Context::PurchasePlanPositionChangeReason
       {
           code: node['code'],
           actual: node['actual'],
-          short_name: node['purchasePlanShortName'],
+          short_name: node['shortName'],
           description: node['description'],
           data: node,
           legal_act_details: node['legalActDetails'],
