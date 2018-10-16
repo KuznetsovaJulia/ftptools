@@ -11,6 +11,7 @@ class Context::ContractSingleCustomerReason
 
       {
         name: node['name'],
+        code: node['code'],
         actual: node['actual'],
         data: node,
         id: node['id'].to_i

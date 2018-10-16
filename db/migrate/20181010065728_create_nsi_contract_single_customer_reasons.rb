@@ -5,6 +5,8 @@ class CreateNsiContractSingleCustomerReasons < ActiveRecord::Migration[5.2]
       t.index :id, unique: true
       t.jsonb :data
       t.string :name
+      t.string :code
+      t.index :code, unique: true
       t.boolean :actual, default: false
 
       t.timestamps

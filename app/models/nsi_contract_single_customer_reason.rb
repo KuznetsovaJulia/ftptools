@@ -1,3 +1,3 @@
 class NsiContractSingleCustomerReason < ApplicationRecord
-  upsert_keys [:id]
+  upsert_keys [:code]
 end
