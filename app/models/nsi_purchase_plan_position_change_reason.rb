@@ -1,0 +1,2 @@
+class NsiPurchasePlanPositionChangeReason < ApplicationRecord
+end
