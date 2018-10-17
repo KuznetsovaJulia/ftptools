@@ -12,7 +12,7 @@ class Context::ContractExecutionDoc
           name: node['name'],
           actual: node['actual'],
           code: node['code'],
-          data: node,
+          data: node
       }
     end
     context.nodes_from = ->(xml) { xml['export']['nsiContractExecutionDoc']['nsiContractExecutionDoc'] }
