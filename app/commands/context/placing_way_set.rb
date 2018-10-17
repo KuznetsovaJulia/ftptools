@@ -17,7 +17,7 @@ include Interactor
         name: node['name'],
         actual: node['actual'],
         placing_way_type: node['placing_way_type'],
-        is_procedure: node['is_procedure'],
+        is_procedure: node['isProcedure'],
         data: node,
         used_in_rpg: node.dig('usedInRPGInfo', 'used_in_rpg'),
         rpg_joint: node.dig('usedInRPGInfo', 'rpg_joint'),
