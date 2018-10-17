@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     post 'get_nsi', to: 'nsi#get_nsi'
+    get 'list', to: 'nsi#list'
+
   end
 end
