@@ -10,7 +10,7 @@ class Context::CommissionRole
 
       {
           id: node['id'],
-          name:  node['Name'],
+          name:  node['name'],
           code:        node['code'],
           data:       node
       }
