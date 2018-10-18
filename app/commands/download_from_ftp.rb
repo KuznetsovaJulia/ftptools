@@ -17,7 +17,7 @@ class DownloadFromFtp
     # --- создаем директорию
     FileUtils.mkdir_p(dirname)
     # --- получаем массив имен файлов архивов
-    filenames = ftp.nlst(context.dir + '*.zip')
+    filenames = ftp.nlst('*.zip')
     context.files=[]
     filenames.each_with_index do |filename, index|
       file_abspath = Rails.root.join(dirname, filename)

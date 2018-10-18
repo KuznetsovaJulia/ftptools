@@ -26,7 +26,6 @@ puts context.files
         values = nodes.map { |node| context.to_value.call(node) }.compact
         context.model.upsert(values)
         total += values.size
-        puts xml
       end
     end
     print("Всего загружено записей: #{total}\n")
