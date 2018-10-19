@@ -11,6 +11,7 @@ class Context::Okved2
       {
           id:   node['id'],
           name: node['name'],
+          actual: node['actual'],
           code: node['code'],
           data: node
       }
