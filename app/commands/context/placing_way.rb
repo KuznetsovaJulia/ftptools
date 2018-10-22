@@ -3,7 +3,7 @@
 
 
 
-class Context::PlacingWaySet
+class Context::PlacingWay
 include Interactor
 
   def call
@@ -16,11 +16,11 @@ include Interactor
         code: node['code'],
         name: node['name'],
         actual: node['actual'],
-        placing_way_type: node['placing_way_type'],
+        placing_way_type: node['placingWayType'],
         is_procedure: node['isProcedure'],
         data: node,
-        used_in_rpg: node.dig('usedInRPGInfo', 'used_in_rpg'),
-        rpg_joint: node.dig('usedInRPGInfo', 'rpg_joint'),
+        used_in_rpg: node.dig('usedInRPGInfo', 'usedInRPG'),
+        rpg_joint: node.dig('usedInRPGInfo', 'RPGJoint'),
         placing_way_id: node['placingWayId'].to_i
       }
     end
