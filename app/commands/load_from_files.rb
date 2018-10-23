@@ -12,18 +12,24 @@ class LoadFromFiles
 
   def call
     total = 0
-puts context.files
     context.files.each do |zip_abspath|
       unzip_file(zip_abspath, /^*.xml/) do |filename, content|
         print("\t#{filename}\n")
         # --- получаем данные XML
         # xml = Nori.new(strip_namespaces: true, advanced_typecasting: false).parse(content)
         xml = Hash.from_xml(content)
+        puts xml
         # --- получаем массив записей справочника
         nodes = context.nodes_from.call(xml)
+        puts nodes.class
+
         # --- перебираем все XML узлы
         # по атрибутам по которым ведется upsert должен быть построен уникальный ключ
-        values = nodes.map { |node| context.to_value.call(node) }.compact
+        if nodes.is_a?(Array)
+          values = nodes.map { |node| context.to_value.call(node) }.compact
+        else
+          values = context.to_value.call(nodes)
+        end
         context.model.upsert(values)
         total += values.size
       end

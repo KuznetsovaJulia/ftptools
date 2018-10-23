@@ -17,11 +17,11 @@ class DownloadFromFtp
     # --- создаем директорию
     FileUtils.mkdir_p(dirname)
     # --- получаем массив имен файлов архивов
-    filenames = ftp.nlst('*.zip')
-    context.files=[]
+    context.files = []
+    filenames     = ftp.nlst(context.dir + '*.zip').find_all { |file| !FcsLog.exists?(file_name: file) }
     filenames.each_with_index do |filename, index|
       file_abspath = Rails.root.join(dirname, filename)
-      print("%-3d %s ...\t" % [index+1, filename])
+      print("%-3d %s ...\t" % [index + 1, filename])
       begin
         ftp.getbinaryfile(filename, file_abspath)
       rescue Net::FTPTempError => e
@@ -30,6 +30,7 @@ class DownloadFromFtp
         reconnect
         retry
       end
+      FcsLog.create(file_name: filename, name_model: context.model)
       context.files << file_abspath
     end
     context.files
@@ -37,6 +38,11 @@ class DownloadFromFtp
 
   private
 
+  def ftp
+    @ftp ||= FtpDownload.new(context.path, context.dir).connect
+  end
+
+=begin
   def ftp
     @ftp ||= connect
   end
@@ -54,4 +60,5 @@ class DownloadFromFtp
     sleep 1
     connect
   end
+=end
 end
