@@ -18,7 +18,16 @@ class DownloadFromFtp
     FileUtils.mkdir_p(dirname)
     # --- получаем массив имен файлов архивов
     context.files = []
-    filenames     = ftp.nlst(context.dir + '*.zip').find_all { |file| !FcsLog.exists?(file_name: file) }
+    filenames     = filename_list
+    ['currMonth', 'prevMonth'].each do |dir|
+       if ftp.nlst.include?(dir)
+         ftp.chdir('/fcs_fas/unfairSupplier/' + dir)
+         filenames += filename_list
+       end
+    end
+    if filenames == []
+      puts "Справочники #{context.model} актуальны."
+    end
     filenames.each_with_index do |filename, index|
       file_abspath = Rails.root.join(dirname, filename)
       print("%-3d %s ...\t" % [index + 1, filename])
@@ -30,10 +39,14 @@ class DownloadFromFtp
         reconnect
         retry
       end
-      FcsLog.create(file_name: filename, name_model: context.model)
       context.files << file_abspath
     end
     context.files
+  end
+
+
+  def filename_list
+   ftp.nlst('*.zip').find_all { |file| !FcsLog.exists?(file_name: file) }
   end
 
   private
