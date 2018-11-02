@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# Типы организаций
 
 class Fcs::Nsi::OrganizationType
   include Interactor

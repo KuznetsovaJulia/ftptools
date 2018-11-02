@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+# Сравочник недобросовестных поставщиков
 class Fcs::Fas::UnfairSupplier
   include Interactor
 

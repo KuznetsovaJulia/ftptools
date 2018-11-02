@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# Справочник причин начисления неустоек (штрафов, пеней)
 
 class Fcs::Nsi::ContractPenaltyReason
   include Interactor

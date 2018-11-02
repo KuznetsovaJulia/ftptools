@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# Общероссийский классификатор стран мира (ОКСМ)
 
 class Fcs::Nsi::Oksm
   include Interactor

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
-
-
-
+# Способы размещения заказа
 
 class Fcs::Nsi::PlacingWay
 include Interactor

@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+# Справочник оснований признания процедуры несостоявшейся
 class Fcs::Nsi::AbandonedReason
   include Interactor
 

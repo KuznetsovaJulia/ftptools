@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# Справочник "Список валют, курс на которые устанавливается ЦБ РФ
 
 class Fcs::Nsi::ContractCurrencyCbrf
   include Interactor

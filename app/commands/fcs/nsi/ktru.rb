@@ -1,3 +1,5 @@
+#Справочник: Каталог товаров, работ, услуг (КТРУ)
+
 class Fcs::Nsi::Ktru
   include Interactor
 

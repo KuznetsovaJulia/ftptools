@@ -20,10 +20,10 @@ class DownloadFromFtp
     context.files = []
     filenames     = filename_list
     ['currMonth', 'prevMonth'].each do |dir|
-       if ftp.nlst.include?(dir)
-         ftp.chdir('/fcs_fas/unfairSupplier/' + dir)
-         filenames += filename_list
-       end
+      if ftp.nlst.include?(dir)
+        ftp.chdir(context.path + context.dir + '/' + dir)
+        filenames += filename_list
+      end
     end
     if filenames == []
       puts "Справочники #{context.model} актуальны."
@@ -46,7 +46,7 @@ class DownloadFromFtp
 
 
   def filename_list
-   ftp.nlst('*.zip').find_all { |file| !FcsLog.exists?(file_name: file) }
+    ftp.nlst('*.zip').find_all { |file| !FcsLog.exists?(file_name: file) }
   end
 
   private

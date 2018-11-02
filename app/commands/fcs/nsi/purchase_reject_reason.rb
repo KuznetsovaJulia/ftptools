@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# Справочник причин отказа в допуске заявок
 
 class Fcs::Nsi::PurchaseRejectReason
   include Interactor

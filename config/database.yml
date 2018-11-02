@@ -14,3 +14,68 @@ test:
   <<: *default
   database: ftptools_test
 
+
+
+#
+## Здесь описаны только параметры подключения к БД pcs_production
+## Для БД esnsi параметры описаны в файле /config/esnsi_database.yml
+#default: &default
+#  adapter: postgresql
+#  username: <%= ENV["DB_PCS_USER"] %>
+#  password: <%= ENV["DB_PCS_PASSWORD"] %>
+#  port: <%= ENV["DB_PCS_PORT"] %>
+#  host: <%= ENV["DB_PCS_HOST"] %>
+#  pool: 20
+#  timeout: 5000
+#  encoding: UTF8
+#  collation: C
+#  template: template0
+#
+#development:
+#  <<: *default
+#  database: pcs_admin
+#
+## Warning: The database defined as "test" will be erased and
+## re-generated from your development database when you run "rake".
+## Do not set this db to the same as development or production.
+#test:
+#  <<: *default
+#  host: localhost
+#  database: pcs_production_test
+#
+#production:
+#  <<: *default
+#  host: <%= ENV["POSTGRES_HOST"] %>
+#  database: pcs_admin
+#
+### Здесь описаны только параметры подключения к БД pcs_production
+### Для БД esnsi параметры описаны в файле /config/esnsi_database.yml
+##default: &default
+##  adapter: postgresql
+##  username: postgres
+##  password: 123456
+##  port: 5433
+##  pool: 20
+##  timeout: 5000
+##  encoding: UTF8
+##  collation: C
+##  template: template0
+##
+##development:
+##  <<: *default
+##  host: localhost
+##  database: pcs_admin
+##
+### Warning: The database defined as "test" will be erased and
+### re-generated from your development database when you run "rake".
+### Do not set this db to the same as development or production.
+##test:
+##  <<: *default
+##  host: localhost
+##  database: pcs_production_test
+##
+##production:
+##  <<: *default
+##  host: <%= ENV["PSC_ADMIN_HOST"] %>
+##  port: <%= ENV["PSC_ADMIN_PORT"] %>
+##  database: <%= ENV["PSC_ADMIN_DATABASE"] %>

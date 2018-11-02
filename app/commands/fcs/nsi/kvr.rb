@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# Коды видов расходов (КВР)
 
 class Fcs::Nsi::Kvr
   include Interactor

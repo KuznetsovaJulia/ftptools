@@ -1,7 +1,5 @@
 # frozen_string_literal: true
-
-
-
+#Общероссийский классификатор территорий муниципальных образований (ОКТМО)
 
 class Fcs::Nsi::Oktmo
 include Interactor

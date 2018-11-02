@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# Обоснования внесения изменений в позицию плана закупок
 
 class Fcs::Nsi::PurchasePlanPositionChangeReason
   include Interactor

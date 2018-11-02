@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+# Справочник: Роли членов комиссий
 class Fcs::Nsi::CommissionRole
   include Interactor
 

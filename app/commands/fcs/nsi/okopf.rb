@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# Общероссийский классификатор организационно-правовых форм (ОКОПФ)
 
 class Fcs::Nsi::Okopf
   include Interactor

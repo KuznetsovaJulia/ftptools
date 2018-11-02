@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# Основания расторжения контракта
 
 class Fcs::Nsi::ContractTerminationReason
   include Interactor

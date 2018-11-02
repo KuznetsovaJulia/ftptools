@@ -1,7 +1,5 @@
 # frozen_string_literal: true
-
-
-
+# Общероссийский классификатор продукции по видам экономической деятельности ОК 034-2014 (ОКПД2)
 
 class Fcs::Nsi::Okpd2
 include Interactor

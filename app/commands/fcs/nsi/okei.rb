@@ -1,8 +1,5 @@
 # frozen_string_literal: true
-
-
-
-
+# Общероссийский классификатор единиц измерения (ОКЕИ)
 class Fcs::Nsi::Okei
 include Interactor
 

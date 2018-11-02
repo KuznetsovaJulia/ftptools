@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# Преимущества (требования, ограничения)  при осуществлении закупок
 
 class Fcs::Nsi::PurchasePreference
   include Interactor

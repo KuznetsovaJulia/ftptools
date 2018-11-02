@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# Справочник причин изменения условий контракта
 
 class Fcs::Nsi::ContractModificationReason
   include Interactor

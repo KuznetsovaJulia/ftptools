@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# Документы, подтверждающие основание заключения контракта
 
 class Fcs::Nsi::ContractSingleCustomerReason
   include Interactor

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# Классификатор кодов сектора государственного управления (КОСГУ)
 
 class Fcs::Nsi::Kosgu
   include Interactor

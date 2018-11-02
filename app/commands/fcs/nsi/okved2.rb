@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# Общероссийский классификатор видов экономической деятельности ОК 029-2014 (ОКВЭД2)
 
 class Fcs::Nsi::Okved2
   include Interactor

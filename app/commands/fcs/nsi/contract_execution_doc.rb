@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# Справочник типов документов исполнения контракта
 
 class Fcs::Nsi::ContractExecutionDoc
   include Interactor

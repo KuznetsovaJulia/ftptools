@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# Типы особых закупок для планов закупок и планов-графиков с 01.01.2017
 
 class Fcs::Nsi::SpecialPurchase
   include Interactor
