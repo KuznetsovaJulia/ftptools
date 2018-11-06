@@ -1,0 +1,2 @@
+class FcsLog < ApplicationRecord
+end

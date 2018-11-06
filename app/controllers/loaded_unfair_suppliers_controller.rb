@@ -1,0 +1,2 @@
+class LoadedUnfairSuppliersController < ApplicationController
+end
